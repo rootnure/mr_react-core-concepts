@@ -5,7 +5,7 @@ const ToDos = ({todosPromise}) => {
     console.log(todos);
     return (
         <div>
-            <h1>ToDos</h1>
+            <h1>ToDos: {todos.length}</h1>
         </div>
     );
 };

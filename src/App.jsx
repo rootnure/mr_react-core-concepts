@@ -8,18 +8,23 @@ import ToDo from './Todo'
 import User from './User';
 import Users from './Users';
 import ToDos from './ToDos';
+import Posts from './Posts';
 
 
 
-const fetchUsers = fetch("https://jsonplaceholder.typicode.com/users").then(res => res.json());
+// const fetchUsers = fetch("https://jsonplaceholder.typicode.com/users").then(res => res.json());
 
 // const fetchTodos = fetch("https://jsonplaceholder.typicode.com/todos").then(res => res.json())
 
-const fetchTodos = async () => {
-  const res = await fetch("https://jsonplaceholder.typicode.com/todos");
+// const fetchTodos = async () => {
+//   const res = await fetch("https://jsonplaceholder.typicode.com/todos");
+//   return res.json();
+// }
+
+const fetchPosts = async () => {
+  const res = await fetch("https://jsonplaceholder.typicode.com/posts");
   return res.json();
 }
-
 
 function App() {
   // function handleClick() {
@@ -43,19 +48,25 @@ function App() {
   //   {id: 3, name: 'Sarwar', age: 24}
   // ]
 
-  const todosPromise = fetchTodos();
+  // const todosPromise = fetchTodos();
+
+  const postsPromise = fetchPosts();
 
   return (
     <>
       <h3>React Core Concepts Part 2</h3>
 
+      <Suspense fallback={<h3>Posts Loading...</h3>}>
+        <Posts postsPromise={postsPromise}></Posts>
+      </Suspense>
+
       {/* <Suspense fallback={<h3>Loading...</h3>}>
         <Users fetchUsers={fetchUsers}></Users>
       </Suspense> */}
 
-      <Suspense fallback={<h3>Todos Loading...</h3>}>
+      {/* <Suspense fallback={<h3>Todos Loading...</h3>}>
         <ToDos todosPromise={todosPromise}></ToDos>
-      </Suspense>
+      </Suspense> */}
 
       {/* <LoadAPIData></LoadAPIData> */}
 
