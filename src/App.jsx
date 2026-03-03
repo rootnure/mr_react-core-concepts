@@ -1,22 +1,38 @@
+import { Suspense } from 'react';
 import './App.css'
 import Counter from './Counter';
 import Friend from './Friend';
+import LoadAPIData from './LoadAPIData';
 import Player from './Player';
 import ToDo from './Todo'
 import User from './User';
+import Users from './Users';
+import ToDos from './ToDos';
+
+
+
+const fetchUsers = fetch("https://jsonplaceholder.typicode.com/users").then(res => res.json());
+
+// const fetchTodos = fetch("https://jsonplaceholder.typicode.com/todos").then(res => res.json())
+
+const fetchTodos = async () => {
+  const res = await fetch("https://jsonplaceholder.typicode.com/todos");
+  return res.json();
+}
+
 
 function App() {
-  function handleClick() {
-    console.log('clicked');
-  }
+  // function handleClick() {
+  //   console.log('clicked');
+  // }
 
-  const handleClick3  = ()=> {
-    console.log("clicked 3");
-  }
+  // const handleClick3  = ()=> {
+  //   console.log("clicked 3");
+  // }
 
-  const handleClick5 = num => {
-    console.log(num);
-  }
+  // const handleClick5 = num => {
+  //   console.log(num);
+  // }
 
 
   // const firends = ['Asif', 'Babul', 'Chandan', 'Rahul', 'Ripon'];
@@ -27,10 +43,23 @@ function App() {
   //   {id: 3, name: 'Sarwar', age: 24}
   // ]
 
+  const todosPromise = fetchTodos();
+
   return (
     <>
-      <h1>React Core Concepts Part 2</h1>
-      <Player></Player>
+      <h3>React Core Concepts Part 2</h3>
+
+      {/* <Suspense fallback={<h3>Loading...</h3>}>
+        <Users fetchUsers={fetchUsers}></Users>
+      </Suspense> */}
+
+      <Suspense fallback={<h3>Todos Loading...</h3>}>
+        <ToDos todosPromise={todosPromise}></ToDos>
+      </Suspense>
+
+      {/* <LoadAPIData></LoadAPIData> */}
+
+      {/* <Player></Player>
 
       <Counter></Counter>
 
@@ -38,7 +67,7 @@ function App() {
       <button onClick={function (){console.log("clicked 2")}}>Click Me 2</button>
       <button onClick={handleClick3}>Click Me 3</button>
       <button onClick={() => console.log('clicked 4')}>Click Me 4</button>
-      <button onClick={() => handleClick5(5)}>Click Me 5</button>
+      <button onClick={() => handleClick5(5)}>Click Me 5</button> */}
 
       {/* {
         users.map(user => <User key={user.id} user={user}></User>)

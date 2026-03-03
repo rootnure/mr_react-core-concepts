@@ -13,11 +13,12 @@ const Player = () => {
     return (
         <div>
             <h2>Player: Abul Khayer</h2>
-            <h1>Runs: {runs}</h1>
+            <h1>Score: {runs}({runsTimeline.length})</h1>
+            <h3>Strike Rate: {(runs/runsTimeline.length*100).toFixed(2)}</h3>
             {
                 runs >= 50 && <span style={{color: 'green'}}>Congratulation...</span>
             }
-            <p style={{display: "flex", gap: '5px'}}>Runs Timeline: {runsTimeline.map((run, idx) => <span style={runStyle} key={idx}>{run}</span>)}</p>
+            <p style={{display: "flex", gap: '5px', overflow: 'scroll'}}>Runs Timeline: {runsTimeline.map((run, idx) => <span style={runStyle} key={idx}>{run}</span>)}</p>
             <div>
                 <button onClick={() => handleRunCount(0)}>Dots (0)</button>
                 <button onClick={() => handleRunCount(1)}>Singles (1)</button>
