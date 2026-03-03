@@ -1,19 +1,39 @@
 import './App.css'
+import Friend from './Friend';
 import ToDo from './Todo'
+import User from './User';
 
 function App() {
+  // const firends = ['Asif', 'Babul', 'Chandan', 'Rahul', 'Ripon'];
+
+  const users = [
+    {id: 1, name: 'Habib', age: 29},
+    {id: 2, name: 'Hasan', age: 33},
+    {id: 3, name: 'Sarwar', age: 24}
+  ]
+
   return (
     <>
       <h1>React Core Concepts</h1>
+
+      {
+        users.map(user => <User key={user.id} user={user}></User>)
+      }
+
+    {/* {
+      firends.map((friend, idx) => <Friend key={idx} friend={friend}></Friend>)
+    } */}
+
+
       {/* <Student name='Shamim' age={28}></Student>
       <Sports></Sports>
       <Person></Person>
       <Student name='Habib' age={25}></Student>
       <Student name='Hasan'></Student> */}
-      <ToDo task="Learn React" isDone={true}></ToDo>
+      {/* <ToDo task="Learn React" isDone={true}></ToDo>
       <ToDo task="Workout" isDone={false}></ToDo>
       <ToDo task="Have a Bath" isDone={true}></ToDo>
-      <ToDo task="Have Meal" isDone={false}></ToDo>
+      <ToDo task="Have Meal" isDone={false}></ToDo> */}
     </>
   )
 }

@@ -18,13 +18,17 @@
 // }
 
 // function ToDo({task, isDone}){
-//     // return isDone && <li style={{color: "yellow"}}>Done: {task}</li>
+//     return isDone && <li style={{color: "yellow"}}>Done: {task}</li>
+// }
+
+// function ToDo({task, isDone}){
 //     return isDone || <li style={{color: "red"}}>Do Now: {task}</li>
 // }
 
 function ToDo({task, isDone}){
     let result;
-    isDone ? result = <li style={{color: "yellow"}}>Done: {task}</li> :
+    isDone ?
+    result = <li style={{color: "yellow"}}>Done: {task}</li> :
     result = <li style={{color: "red"}}>Do Now: {task}</li>
     return result;
 }
