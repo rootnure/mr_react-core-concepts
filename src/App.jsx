@@ -9,6 +9,7 @@ import User from './User';
 import Users from './Users';
 import ToDos from './ToDos';
 import Posts from './Posts';
+import Comments from './Comments';
 
 
 
@@ -21,10 +22,10 @@ import Posts from './Posts';
 //   return res.json();
 // }
 
-const fetchPosts = async () => {
-  const res = await fetch("https://jsonplaceholder.typicode.com/posts");
-  return res.json();
-}
+// const fetchPosts = async () => {
+//   const res = await fetch("https://jsonplaceholder.typicode.com/posts");
+//   return res.json();
+// }
 
 function App() {
   // function handleClick() {
@@ -50,15 +51,17 @@ function App() {
 
   // const todosPromise = fetchTodos();
 
-  const postsPromise = fetchPosts();
+  // const postsPromise = fetchPosts();
 
   return (
     <>
       <h3>React Core Concepts Part 2</h3>
+      
+      <Comments></Comments>
 
-      <Suspense fallback={<h3>Posts Loading...</h3>}>
+      {/* <Suspense fallback={<h3>Posts Loading...</h3>}>
         <Posts postsPromise={postsPromise}></Posts>
-      </Suspense>
+      </Suspense> */}
 
       {/* <Suspense fallback={<h3>Loading...</h3>}>
         <Users fetchUsers={fetchUsers}></Users>
