@@ -1,6 +1,7 @@
 import './App.css'
 import Counter from './Counter';
 import Friend from './Friend';
+import Player from './Player';
 import ToDo from './Todo'
 import User from './User';
 
@@ -29,8 +30,10 @@ function App() {
   return (
     <>
       <h1>React Core Concepts Part 2</h1>
+      <Player></Player>
+
       <Counter></Counter>
-      
+
       <button onClick={handleClick}>Click Me</button>
       <button onClick={function (){console.log("clicked 2")}}>Click Me 2</button>
       <button onClick={handleClick3}>Click Me 3</button>
